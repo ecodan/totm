@@ -68,9 +68,13 @@ You don't run scripts; you talk to the **Chorus Agent** in your TUI. It uses spe
 
 1.  **Drafting**: *"Clarify the requirements for a Social Feed."* (Agent drafts in `incubator/` section-by-section).
 2.  **Hatching**: *"Hatch this as the 'v1-feed' brood."* (Docs move to `forward/broods/v1-feed/`).
-3.  **Branching**: *"Start a branch called 'feed-db' linked to 'v1-feed'."* (Agent creates branch + local task list).
-4.  **Coding**: Agent implements the schema based on the brood's Tech Design.
-5.  **Synthesizing**: *"Done. Update the canon."* (Agent updates `canon/modules/feed.md` and archives the branch).
+3.  **Branching**: *"Start a branch called 'feed-db' linked to 'v1-feed'."* (Agent creates branch).
+4.  **Implementing**: *"Implement Phase 1."*
+    - The agent reads the **Phased Tasks** in the Brood and implements Phase 1 (e.g., Models) one-by-one.
+    - It then **STOPS** and asks for code review.
+5.  **Completing**: *"Complete Phase 1."*
+    - The agent automatically **Synthesizes** the Canon, **Archives** the branch, and updates the **Index**.
+
 
 > [!IMPORTANT]
 > Always initialize a new project with `python scripts/chorus/scripts/init.py` before starting your first interaction.
