@@ -1,0 +1,7 @@
+[project]
+name = "totm"
+version = "0.1.0"
+description = "Theater of the Mind (TOTM) - A Cicadas-based project"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []

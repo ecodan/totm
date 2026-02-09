@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.1",
+  "branches": {
+    "phase-1-models": {
+      "intent": "Implement Phase 1 Models",
+      "modules": [],
+      "owner": "unknown",
+      "created_at": "2026-02-09T19:21:28.874298+00:00",
+      "brood": "totm"
+    }
+  },
+  "broods": {
+    "totm": {
+      "intent": "Initial project migration",
+      "owner": "unknown",
+      "created_at": "2026-02-09T19:01:21.160752+00:00",
+      "branches": [
+        "phase-1-models"
+      ]
+    },
+    "core-models": {
+      "intent": "Implementing core-models",
+      "owner": "unknown",
+      "created_at": "2026-02-09T19:20:38.613395+00:00",
+      "branches": []
+    }
+  }
+}
