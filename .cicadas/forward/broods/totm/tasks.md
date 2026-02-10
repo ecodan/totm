@@ -1,13 +1,14 @@
 # Tasks: TOTM (Theater of the Mind)
 
 ## 0. Project Scaffolding
-- [ ] Initialize project structure following the `totm` namespace.
-- [ ] Create core packages: `engine`, `tools`, `agent`, `ui`.
-- [ ] Add `__init__.py` to all packages.
+- [ ] Initialize project structure following the `src/totm` namespace.
+- [ ] Create core packages in `src/totm`: `engine`, `tools`, `agent`, `ui`.
+- [ ] Create `test/` directory for automated verification.
+- [ ] Add `__init__.py` to all packages in `src/totm` and to `test/`.
 - [ ] Verify project can be imported (test/smoke setup).
 
 ## 1. Project Infrastructure & Data Models
-- [ ] Initialize Python/Node project structure.
+- [ ] Initialize Python project structure in `src/totm/`.
 - [ ] Implement `Character` class (Warrior, Mage, Cleric, Thief) with JSON serialization.
 - [ ] Implement `Location` node model (Description, NPCs, GM Guide, Inventory).
 - [ ] Implement `Journey` edge model (Direction, Duration, Difficulty, Risks).

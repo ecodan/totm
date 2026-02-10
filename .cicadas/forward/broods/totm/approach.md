@@ -28,7 +28,7 @@ The GM must never "roll dice" or decide success/failure. It must call `traverse`
 - Define the `totm` namespace and internal package boundaries.
 - **Proposed Structure**:
   ```text
-  totm/
+  src/totm/
   ├── __init__.py
   ├── app.py              # Entry point
   ├── engine/             # State Engine & Data Models
@@ -44,6 +44,8 @@ The GM must never "roll dice" or decide success/failure. It must call `traverse`
   └── ui/                 # Terminal Interface
       ├── __init__.py
       └── console.py
+  test/
+  └── __init__.py         # Test suite scaffolding
   ```
 
 ### Phase 1: Foundation (The Engine)
