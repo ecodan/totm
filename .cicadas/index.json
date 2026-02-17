@@ -7,6 +7,13 @@
       "summary": "Implemented engine partition: Character/NPC/Location/Journey models, WorldGraph, StateEngine with traverse/interact adjudication and JSON persistence. 35 passing tests.",
       "decisions": "",
       "modules": []
+    },
+    {
+      "timestamp": "2026-02-17T03:48:10.017821+00:00",
+      "branch": "feat/tools",
+      "summary": "Implemented Arbiter Tools API: schema.py (6 result types) and api.py (ArbiterTools fa\u00e7ade with 6 tool methods). 15 tool tests + integration flow.",
+      "decisions": "",
+      "modules": []
     }
   ]
 }
