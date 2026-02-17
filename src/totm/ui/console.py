@@ -18,13 +18,15 @@ from totm.ui.formatting import (
 from totm.ui.triggers import TriggerParser, Intent
 
 
+from totm.agent.client import GMAgent
+
 class Console:
     """The terminal interface controller."""
 
-    def __init__(self, engine: StateEngine, tools: ArbiterTools, agent_client=None) -> None:
+    def __init__(self, engine: StateEngine, tools: ArbiterTools, agent: Optional[GMAgent] = None) -> None:
         self.engine = engine
         self.tools = tools
-        self.agent = agent_client  # Nullable for now (stubbed later)
+        self.agent = agent
         self.parser = TriggerParser()
         self._running = True
 
@@ -231,13 +233,16 @@ class Console:
 
     def _handle_narrative(self, text: str) -> None:
         """Handle raw narrative input -> GM Agent."""
-        # For now, since we have no agent, we mock it or allow basic commands via narrative (?)
-        # Actually, without the agent, narrative input does nothing but print "GM not connected".
-        # However, for testing, let's allow some basic "cheat" commands if we want,
-        # or just say:
-        thinking_indicator(0.5)
-        print_gm(f"(The GM Agent is not connected yet. You said: '{text}')")
-        print_system("Hint: Try commands like '/look', '/stats', '/exits' or plain text 'look around'.")
+        if not self.agent:
+            print_system("GM Agent is not connected. (Set GEMINI_API_KEY to enable)")
+            return
+
+        thinking_indicator()
+        try:
+            response = self.agent.send(text)
+            print_gm(response)
+        except Exception as e:
+            print_error(f"Agent error: {e}")
 
     def _show_help(self) -> None:
         print("\n[ HELP ]")

@@ -64,15 +64,11 @@
 ### Partition 4: GM Agent & Knowledge → `feat/agent`
 
 #### Phase 1: GM Core (Blocking)
-- [ ] Create `src/totm/agent/persona.py`: Define GM System Prompt (persona, constraints, tool-use instructions) <!-- id: 400 -->
-- [ ] Create `src/totm/agent/context.py`: Implement context injection logic — build prompt from current location, exits, stats, epoch summaries <!-- id: 401 -->
-- [ ] Create `src/totm/agent/client.py`: LLM provider client (API integration, response streaming) <!-- id: 402 -->
-
-#### Phase 2: Knowledge & Memory (Parallelizable)
-- [ ] Create `src/totm/agent/rag.py`: Implement Rulebook RAG retriever for dynamic rule reference <!-- id: 410 -->
-- [ ] Create `src/totm/agent/epochs.py`: Implement Epoch system — summarization triggers, overview + detail storage <!-- id: 411 -->
-
-#### Phase 3: Integration & Tests
-- [ ] Create `test/test_context.py`: Unit tests for context injection (verify prompt structure) <!-- id: 420 -->
-- [ ] Create `test/test_agent_integration.py`: Integration tests for tool-agent round-trips <!-- id: 421 -->
-- [ ] Manual walkthrough: Full "Well Bottom" sample encounter end-to-end <!-- id: 422 -->
+- [x] Create `src/totm/assets/agents.json`: Define model configs (Gemini, Claude, GPT) and default agent version <!-- id: 400 -->
+- [x] Create `src/totm/assets/prompts/gm.toml`: Define versioned System Prompts (v1) <!-- id: 401 -->
+- [x] Create `src/totm/agent/config.py`: Utilities to load `agents.json` and resolve TOML prompts <!-- id: 402 -->
+- [x] Create `src/totm/agent/__init__.py`: Package init <!-- id: 403 -->
+- [x] Create `src/totm/agent/client.py`: Implement `GMAgent` class using `litellm` (chat loop, tool execution, history) <!-- id: 404 -->
+- [x] Update `src/totm/ui/console.py`: Wire Agent into the shell (narrative input routing) <!-- id: 405 -->
+- [x] Update `src/totm/app.py`: Initialize Agent with config and pass to UI <!-- id: 406 -->
+- [x] Create `test/test_agent_mock.py`: Unit tests for `GMAgent` tool loop (mocking `litellm`) <!-- id: 407 -->
