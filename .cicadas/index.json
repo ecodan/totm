@@ -1,4 +1,12 @@
 {
   "schema_version": "2.0",
-  "entries": []
+  "entries": [
+    {
+      "timestamp": "2026-02-17T03:45:18.935039+00:00",
+      "branch": "feat/engine",
+      "summary": "Implemented engine partition: Character/NPC/Location/Journey models, WorldGraph, StateEngine with traverse/interact adjudication and JSON persistence. 35 passing tests.",
+      "decisions": "",
+      "modules": []
+    }
+  ]
 }
