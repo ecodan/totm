@@ -1,3 +1,0 @@
-# App Snapshot
-
-[Pending Synthesis]

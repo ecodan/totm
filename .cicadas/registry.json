@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.1",
-  "branches": {},
-  "broods": {
+  "schema_version": "2.0",
+  "initiatives": {
     "totm": {
       "intent": "Initial project migration",
       "owner": "unknown",
       "created_at": "2026-02-09T19:01:21.160752+00:00",
       "branches": []
     }
-  }
+  },
+  "branches": {}
 }
