@@ -30,16 +30,16 @@
 ### Partition 2: Arbiter Tools → `feat/tools`
 
 #### Phase 1: Tool API (Blocking)
-- [ ] Create `src/totm/tools/schema.py`: Define tool input/output schemas and result object format <!-- id: 200 -->
-- [ ] Create `src/totm/tools/api.py`: Implement `get_location()` — returns current location data with GM guide <!-- id: 201 -->
-- [ ] Update `src/totm/tools/api.py`: Implement `get_exits()` — returns connected edges with direction and risk labels <!-- id: 202 -->
-- [ ] Update `src/totm/tools/api.py`: Implement `traverse(edge_id)` — delegates to StateEngine, returns result object <!-- id: 203 -->
-- [ ] Update `src/totm/tools/api.py`: Implement `interact(npc_id, action)` — delegates to StateEngine, returns outcome <!-- id: 204 -->
-- [ ] Update `src/totm/tools/api.py`: Implement `update_character(stats)` — commits class and stats during Preparation Phase <!-- id: 205 -->
+- [x] Create `src/totm/tools/schema.py`: Define tool input/output schemas and result object format <!-- id: 200 -->
+- [x] Create `src/totm/tools/api.py`: Implement `get_location()` — returns current location data with GM guide <!-- id: 201 -->
+- [x] Update `src/totm/tools/api.py`: Implement `get_exits()` — returns connected edges with direction and risk labels <!-- id: 202 -->
+- [x] Update `src/totm/tools/api.py`: Implement `traverse(edge_id)` — delegates to StateEngine, returns result object <!-- id: 203 -->
+- [x] Update `src/totm/tools/api.py`: Implement `interact(npc_id, action)` — delegates to StateEngine, returns outcome <!-- id: 204 -->
+- [x] Update `src/totm/tools/api.py`: Implement `update_character(stats)` — commits class and stats during Preparation Phase <!-- id: 205 -->
 
 #### Phase 2: Tool Tests (Parallelizable)
-- [ ] Create `test/test_tools.py`: Unit tests for each tool (mock StateEngine, verify result schemas) <!-- id: 210 -->
-- [ ] Create `test/test_tool_integration.py`: Integration tests — tools against a real StateEngine with prototype world <!-- id: 211 -->
+- [x] Create `test/test_tools.py`: Unit tests for each tool (mock StateEngine, verify result schemas) <!-- id: 210 -->
+- [x] Create `test/test_tools.py`: Integration tests — tools against a real StateEngine with prototype world (combined in test_tools.py) <!-- id: 211 -->
 
 ---
 
