@@ -46,18 +46,18 @@
 ### Partition 3: Terminal UI & Game Flows → `feat/ui`
 
 #### Phase 1: Shell (Blocking)
-- [ ] Create `src/totm/ui/console.py`: Implement terminal Main Menu (New, Load, Save, Create Character, Play) <!-- id: 300 -->
-- [ ] Create `src/totm/ui/triggers.py`: Implement Plain Text Trigger parser (intent → tool call mapping) <!-- id: 301 -->
-- [ ] Create `src/totm/ui/formatting.py`: Rich text formatting for GM output and "Thinking..." indicators <!-- id: 302 -->
-- [ ] Create `src/totm/app.py`: Wire entry point with menu routing <!-- id: 303 -->
-
-#### Phase 2: Game Flows (Blocking)
-- [ ] Update `src/totm/ui/console.py`: Implement Preparation Phase flow (GM-guided character creation dialogue) <!-- id: 310 -->
-- [ ] Update `src/totm/ui/console.py`: Implement Gameplay Phase serial console (prompt loop, GM narration display, state-narrative injection) <!-- id: 311 -->
+- [x] Create `src/totm/ui/console.py`: Implement terminal Main Menu (New, Load, Save, Create Character, Play) <!-- id: 300 -->
+- [x] Create `src/totm/ui/triggers.py`: Implement Plain Text Trigger parser (intent → tool call mapping) <!-- id: 301 -->
+- [x] Create `src/totm/ui/formatting.py`: Rich text utilities (colors, headers, GM/System/Error print helpers) <!-- id: 300 -->
+- [x] Create `src/totm/ui/triggers.py`: Parser for plain text triggers (commands disguised as natural language) <!-- id: 301 -->
+- [x] Create `src/totm/ui/console.py`: Main Menu loop (New/Load/Save/Quit) <!-- id: 302 -->
+- [x] Update `src/totm/ui/console.py`: Implement Preparation Phase (Character Creation flow) <!-- id: 303 -->
+- [x] Update `src/totm/ui/console.py`: Implement Gameplay Phase (Serial console loop, tool dispatch, narrative routing) <!-- id: 304 -->
+- [x] Create `src/totm/app.py`: Application entry point (bootstraps Engine, Tools, UI) <!-- id: 305 -->
 
 #### Phase 3: UI Tests
-- [ ] Create `test/test_triggers.py`: Unit tests for Plain Text Trigger parsing <!-- id: 320 -->
-- [ ] Create `test/test_menu.py`: Tests for menu routing and game flow transitions <!-- id: 321 -->
+- [x] Create `test/test_triggers.py`: Unit tests for intent parsing regex <!-- id: 310 -->
+- [x] Create `test/test_console.py`: Unit tests for shell logic (mocked engine/tools) <!-- id: 311 -->
 
 ---
 
