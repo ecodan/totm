@@ -21,6 +21,13 @@
       "summary": "Implemented UI Shell: Main Menu, Character Creation, Gameplay Loop, Rich Text Formatting, and Plain Text Triggers. 57 passing tests.",
       "decisions": "",
       "modules": []
+    },
+    {
+      "timestamp": "2026-02-17T05:29:25.786612+00:00",
+      "branch": "feat/agent",
+      "summary": "Implemented GM Agent (Partition 4) with LiteLLM architecture. Config driven (assets/agents.json, assets/prompts/gm.toml), tool-use loop, and console integration.",
+      "decisions": "",
+      "modules": []
     }
   ]
 }
