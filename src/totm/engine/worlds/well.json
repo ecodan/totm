@@ -1,0 +1,83 @@
+{
+    "region": "Dark Forest",
+    "locations": [
+        {
+            "id": "loc_well_top",
+            "name": "The Abandoned Well",
+            "description": "A crumbling stone well sits at the edge of a clearing. The air is cold, and something glints below.",
+            "npcs": [],
+            "inventory": [
+                "frayed_rope"
+            ],
+            "gm_guide": "The well is the entrance to the underground passage. The rope can be used, but it's unreliable."
+        },
+        {
+            "id": "loc_well_bottom",
+            "name": "The Bottom of the Well",
+            "description": "Damp, mossy stone walls rise around you. Water drips from above. A heavy, rusted chest sits in the corner.",
+            "npcs": [
+                {
+                    "id": "goblin_01",
+                    "name": "Cowering Goblin",
+                    "hp": 5,
+                    "hostile": false,
+                    "description": "A small, trembling goblin clutching a bent dagger."
+                }
+            ],
+            "inventory": [
+                "rusted_chest"
+            ],
+            "gm_guide": "The chest contains the forest map. The goblin knows about the secret switch but only reveals it if befriended."
+        },
+        {
+            "id": "loc_tunnel",
+            "name": "The Dark Tunnel",
+            "description": "A narrow, winding tunnel leads deeper underground. Strange mushrooms glow faintly along the walls.",
+            "npcs": [],
+            "inventory": [
+                "glowing_mushroom"
+            ],
+            "gm_guide": "The tunnel is safe but disorienting. The mushrooms are edible and restore 1 HP."
+        }
+    ],
+    "journeys": [
+        {
+            "id": "j_well_top_to_bottom",
+            "from_id": "loc_well_top",
+            "to_id": "loc_well_bottom",
+            "direction": "down",
+            "duration": "1 minute",
+            "difficulty": 3,
+            "risks": [
+                "Slippery stones",
+                "Darkness"
+            ],
+            "description": "A precarious climb down the rusted ladder."
+        },
+        {
+            "id": "j_well_bottom_to_top",
+            "from_id": "loc_well_bottom",
+            "to_id": "loc_well_top",
+            "direction": "up",
+            "duration": "2 minutes",
+            "difficulty": 4,
+            "risks": [
+                "Climb",
+                "Slippery stones"
+            ],
+            "description": "Climbing back up is harder — the rungs are slick."
+        },
+        {
+            "id": "j_bottom_to_tunnel",
+            "from_id": "loc_well_bottom",
+            "to_id": "loc_tunnel",
+            "direction": "east",
+            "duration": "5 minutes",
+            "difficulty": 2,
+            "risks": [
+                "Darkness"
+            ],
+            "description": "A low passage behind the chest leads into a dark tunnel."
+        }
+    ]
+}

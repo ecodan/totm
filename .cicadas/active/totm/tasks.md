@@ -1,48 +1,78 @@
 # Tasks: TOTM (Theater of the Mind)
 
-## 0. Project Scaffolding
-- [ ] Initialize project structure following the `src/totm` namespace.
-- [ ] Create core packages in `src/totm`: `engine`, `tools`, `agent`, `ui`.
-- [ ] Create `test/` directory for automated verification.
-- [ ] Add `__init__.py` to all packages in `src/totm` and to `test/`.
-- [ ] Verify project can be imported (test/smoke setup).
+## Mode A: Foundation (Strict Phases)
 
-## 1. Project Infrastructure & Data Models
-- [ ] Initialize Python project structure in `src/totm/`.
-- [ ] Implement `Character` class (Warrior, Mage, Cleric, Thief) with JSON serialization.
-- [ ] Implement `Location` node model (Description, NPCs, GM Guide, Inventory).
-- [ ] Implement `Journey` edge model (Direction, Duration, Difficulty, Risks).
-- [ ] Implement `WorldGraph` to manage regions and location traversal.
+---
 
-## 2. State Engine (Solid Ground)
-- [ ] Create `StateEngine` for managing active character, current location, and world persistence.
-- [ ] Implement `Save/Load` functionality for game states.
-- [ ] Implement deterministic adjudication logic for `traverse` (Stat checks vs Edge difficulty).
-- [ ] Implement `interact` logic for NPC encounters.
+### Partition 1: Data Models & State Engine → `feat/engine`
 
-## 3. Arbiter Tools
-- [ ] Interface `get_location()` tool with the State Engine.
-- [ ] Interface `get_exits()` tool with the State Engine.
-- [ ] Interface `traverse(edge_id)` tool (returning success/fail/cost result).
-- [ ] Interface `update_character(stats)` tool for character creation.
+#### Phase 1: Data Models (Blocking)
+- [x] Create `src/totm/engine/models.py`: Define `Character` class with archetypes (Warrior, Mage, Cleric, Thief), stats (brawn, brains, faith, speed, hp, xp), and JSON serialization <!-- id: 100 -->
+- [x] Create `src/totm/engine/models.py`: Define `Location` node model (id, name, description, npcs, inventory, gm_guide) <!-- id: 101 -->
+- [x] Create `src/totm/engine/models.py`: Define `Journey` edge model (from, to, direction, duration, difficulty, risks, description) <!-- id: 102 -->
+- [x] Create `src/totm/engine/graph.py`: Implement `WorldGraph` class — add/get locations, add/get edges, neighbors, region scoping <!-- id: 103 -->
 
-## 4. Shell & Interaction (The Console)
-- [ ] Implement terminal-based Main Menu (New, Load, Save, Create, Play).
-- [ ] Implement the "Serial Console" for the Gameplay Phase.
-- [ ] Implement Plain Text Trigger parser (mapping natural language to slash commands).
-- [ ] Add "Thinking..." indicators and rich text formatting for GM output.
+#### Phase 2: State Engine (Blocking)
+- [x] Create `src/totm/engine/store.py`: Implement `StateEngine` — active character, current location, world graph reference <!-- id: 110 -->
+- [x] Update `src/totm/engine/store.py`: Implement save/load persistence (JSON file) <!-- id: 111 -->
+- [x] Update `src/totm/engine/store.py`: Implement deterministic `traverse` adjudication (stat check vs edge difficulty → result object) <!-- id: 112 -->
+- [x] Update `src/totm/engine/store.py`: Implement `interact` adjudication for NPC encounters <!-- id: 113 -->
 
-## 5. Game Flows
-- [ ] Implement **Preparation Phase**: Narrative-driven character setup flow.
-- [ ] Implement **Gameplay Phase**: Main loop with GM narration and state-narrative injection.
-- [ ] Implement **Epoch System**: Automated summarization and granular logging.
+#### Phase 3: Prototype Data & Tests
+- [x] Create `src/totm/engine/worlds/well.json`: Bootstrap prototype world graph (Well Bottom scenario) <!-- id: 120 -->
+- [x] Create `test/test_models.py`: Unit tests for Character, Location, Journey serialization <!-- id: 121 -->
+- [x] Create `test/test_graph.py`: Unit tests for WorldGraph traversal and neighbor lookups <!-- id: 122 -->
+- [x] Create `test/test_engine.py`: Unit tests for StateEngine adjudication logic (traverse, interact) <!-- id: 123 -->
+- [x] Create `test/test_engine.py`: Unit tests for save/load round-trip (included in test_engine.py) <!-- id: 124 -->
 
-## 6. AI & Knowledge (The GM)
-- [ ] Standardize the GM System Prompt (Persona, Constraints, Tool usage).
-- [ ] Integrate Rulebook RAG (Retriever for dynamic rule reference).
-- [ ] Implement context injection logic: Building the context window from current SE state.
+---
 
-## 7. Verification & Polish
-- [ ] Unit tests for Graph traversal and Stat checks.
-- [ ] Integration tests for Tool-Agent round-trips.
-- [ ] Manual walkthrough of a "Sample Encounter" (Well Bottom).
+### Partition 2: Arbiter Tools → `feat/tools`
+
+#### Phase 1: Tool API (Blocking)
+- [ ] Create `src/totm/tools/schema.py`: Define tool input/output schemas and result object format <!-- id: 200 -->
+- [ ] Create `src/totm/tools/api.py`: Implement `get_location()` — returns current location data with GM guide <!-- id: 201 -->
+- [ ] Update `src/totm/tools/api.py`: Implement `get_exits()` — returns connected edges with direction and risk labels <!-- id: 202 -->
+- [ ] Update `src/totm/tools/api.py`: Implement `traverse(edge_id)` — delegates to StateEngine, returns result object <!-- id: 203 -->
+- [ ] Update `src/totm/tools/api.py`: Implement `interact(npc_id, action)` — delegates to StateEngine, returns outcome <!-- id: 204 -->
+- [ ] Update `src/totm/tools/api.py`: Implement `update_character(stats)` — commits class and stats during Preparation Phase <!-- id: 205 -->
+
+#### Phase 2: Tool Tests (Parallelizable)
+- [ ] Create `test/test_tools.py`: Unit tests for each tool (mock StateEngine, verify result schemas) <!-- id: 210 -->
+- [ ] Create `test/test_tool_integration.py`: Integration tests — tools against a real StateEngine with prototype world <!-- id: 211 -->
+
+---
+
+### Partition 3: Terminal UI & Game Flows → `feat/ui`
+
+#### Phase 1: Shell (Blocking)
+- [ ] Create `src/totm/ui/console.py`: Implement terminal Main Menu (New, Load, Save, Create Character, Play) <!-- id: 300 -->
+- [ ] Create `src/totm/ui/triggers.py`: Implement Plain Text Trigger parser (intent → tool call mapping) <!-- id: 301 -->
+- [ ] Create `src/totm/ui/formatting.py`: Rich text formatting for GM output and "Thinking..." indicators <!-- id: 302 -->
+- [ ] Create `src/totm/app.py`: Wire entry point with menu routing <!-- id: 303 -->
+
+#### Phase 2: Game Flows (Blocking)
+- [ ] Update `src/totm/ui/console.py`: Implement Preparation Phase flow (GM-guided character creation dialogue) <!-- id: 310 -->
+- [ ] Update `src/totm/ui/console.py`: Implement Gameplay Phase serial console (prompt loop, GM narration display, state-narrative injection) <!-- id: 311 -->
+
+#### Phase 3: UI Tests
+- [ ] Create `test/test_triggers.py`: Unit tests for Plain Text Trigger parsing <!-- id: 320 -->
+- [ ] Create `test/test_menu.py`: Tests for menu routing and game flow transitions <!-- id: 321 -->
+
+---
+
+### Partition 4: GM Agent & Knowledge → `feat/agent`
+
+#### Phase 1: GM Core (Blocking)
+- [ ] Create `src/totm/agent/persona.py`: Define GM System Prompt (persona, constraints, tool-use instructions) <!-- id: 400 -->
+- [ ] Create `src/totm/agent/context.py`: Implement context injection logic — build prompt from current location, exits, stats, epoch summaries <!-- id: 401 -->
+- [ ] Create `src/totm/agent/client.py`: LLM provider client (API integration, response streaming) <!-- id: 402 -->
+
+#### Phase 2: Knowledge & Memory (Parallelizable)
+- [ ] Create `src/totm/agent/rag.py`: Implement Rulebook RAG retriever for dynamic rule reference <!-- id: 410 -->
+- [ ] Create `src/totm/agent/epochs.py`: Implement Epoch system — summarization triggers, overview + detail storage <!-- id: 411 -->
+
+#### Phase 3: Integration & Tests
+- [ ] Create `test/test_context.py`: Unit tests for context injection (verify prompt structure) <!-- id: 420 -->
+- [ ] Create `test/test_agent_integration.py`: Integration tests for tool-agent round-trips <!-- id: 421 -->
+- [ ] Manual walkthrough: Full "Well Bottom" sample encounter end-to-end <!-- id: 422 -->
